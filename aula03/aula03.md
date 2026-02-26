@@ -1,4 +1,4 @@
-Aqui está o conteúdo da sua aula formatado em **Markdown (.md)**, seguindo uma estrutura hierárquica clara, com blocos de código destacados e tabelas organizadas para facilitar a leitura.
+
 
 ---
 
