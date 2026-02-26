@@ -168,9 +168,66 @@ CREATE DATABASE loja_virtual
 
 **Gostaria que eu gerasse um script de exemplo criando algumas tabelas (como `clientes` e `pedidos`) seguindo todas essas regras de nomenclatura?**
 
-SQL: Tipos de Dados Inteiros (MariaDB/MySQL)Entender os tipos inteiros é, basicamente, entender quanto espaço em disco você quer reservar e qual o tamanho máximo do número que pretende guardar. Pense neles como "caixas" de tamanhos diferentes: usar uma caixa gigante para um dado pequeno desperdiça memória e performance.1. Escala de Tipos InteirosTipoBytesValor Mínimo (Signed)Valor Máximo (Signed)Exemplo de UsoTINYINT1-128127Idade, status (0 ou 1)SMALLINT2-32.76832.767Estoque pequenoMEDIUMINT3-8.388.6088.388.607População de cidadesINT4-2.147.483.6482.147.483.647IDs de tabelas comunsBIGINT8-9 trilhões...+9 trilhões...IDs globais (Twitter, YT)2. Conceitos FundamentaisSigned vs. UnsignedPor padrão, os números são Signed (com sinal), aceitando valores negativos. Como raramente usamos "ID negativo" ou "idade negativa", aplicamos o modificador UNSIGNED.Isso elimina os negativos e dobra a capacidade positiva.Exemplo: TINYINT UNSIGNED vai de 0 a 255 (em vez de -128 a 127).O Mito do INT(11)O número entre parênteses não limita o valor armazenado.Um INT sempre ocupará 4 bytes e sempre irá até 2 bilhões.O (11) é apenas uma instrução de exibição (espaçamento visual ou preenchimento de zeros), ignorada pela maioria das aplicações modernas.3. Guia de Escolha (Boas Práticas)Para IDs (Chaves Primárias): Use INT UNSIGNED ou BIGINT UNSIGNED.Para Booleanos (Verdadeiro/Falso): O MariaDB usa TINYINT(1), onde 0 é falso e 1 é verdadeiro.Na dúvida? Use INT. É o padrão da indústria para a maioria dos casos generalistas.4. Exemplo Prático de DDLAbaixo, um exemplo aplicando as convenções de nomenclatura e a escolha correta dos tipos:SQLCREATE TABLE produtos (
+Aqui está o conteúdo organizado e formatado em **Markdown (.md)**, ideal para seus estudos ou para o seu repositório no GitHub:
+
+---
+
+# SQL: Tipos de Dados Inteiros (MariaDB/MySQL)
+
+Entender os tipos inteiros é, basicamente, entender quanto **espaço em disco** você quer reservar e qual o **tamanho máximo do número** que pretende guardar. Pense neles como "caixas" de tamanhos diferentes: usar uma caixa gigante para um dado pequeno desperdiça memória e performance.
+
+## 1. Escala de Tipos Inteiros
+
+| Tipo | Bytes | Valor Mínimo (Signed) | Valor Máximo (Signed) | Exemplo de Uso |
+| --- | --- | --- | --- | --- |
+| **TINYINT** | 1 | -128 | 127 | Idade, status (0 ou 1) |
+| **SMALLINT** | 2 | -32.768 | 32.767 | Estoque pequeno |
+| **MEDIUMINT** | 3 | -8.388.608 | 8.388.607 | População de cidades |
+| **INT** | 4 | -2.147.483.648 | 2.147.483.647 | IDs de tabelas comuns |
+| **BIGINT** | 8 | -9 trilhões... | +9 trilhões... | IDs globais (Twitter, YT) |
+
+---
+
+## 2. Conceitos Fundamentais
+
+### Signed vs. Unsigned
+
+Por padrão, os números são **Signed** (com sinal), aceitando valores negativos. Como raramente usamos "ID negativo" ou "idade negativa", aplicamos o modificador `UNSIGNED`.
+
+* Isso elimina os negativos e **dobra** a capacidade positiva.
+* **Exemplo:** `TINYINT UNSIGNED` vai de **0 a 255** (em vez de -128 a 127).
+
+### O Mito do `INT(11)`
+
+O número entre parênteses **não limita o valor armazenado**.
+
+* Um `INT` sempre ocupará 4 bytes e sempre irá até 2 bilhões.
+* O `(11)` é apenas uma instrução de **exibição** (espaçamento visual ou preenchimento de zeros), ignorada pela maioria das aplicações modernas.
+
+---
+
+## 3. Guia de Escolha (Boas Práticas)
+
+* **Para IDs (Chaves Primárias):** Use `INT UNSIGNED` ou `BIGINT UNSIGNED`.
+* **Para Booleanos (Verdadeiro/Falso):** O MariaDB usa `TINYINT(1)`, onde `0` é falso e `1` é verdadeiro.
+* **Na dúvida?** Use `INT`. É o padrão da indústria para a maioria dos casos generalistas.
+
+---
+
+## 4. Exemplo Prático de DDL
+
+Abaixo, um exemplo aplicando as convenções de nomenclatura e a escolha correta dos tipos:
+
+```sql
+CREATE TABLE produtos (
     id_produto      INT UNSIGNED AUTO_INCREMENT, -- Suporta até ~4 bilhões de itens
     estoque         SMALLINT UNSIGNED,           -- Suporta até 65.535 unidades
     status_ativo    TINYINT(1),                  -- Booleano (0 ou 1)
     PRIMARY KEY (id_produto)
 );
+
+```
+
+---
+
+**Agora que terminamos os inteiros, gostaria de converter também aquela explicação sobre o cálculo binário (bits e bytes) para .md ou prefere seguir para tipos de texto?**
