@@ -1,4 +1,4 @@
-Aqui está o conteúdo da sua aula formatado em **Markdown (.md)**, seguindo uma estrutura hierárquica clara, com blocos de código destacados e tabelas organizadas para facilitar a leitura.
+
 
 ---
 
@@ -226,8 +226,3 @@ CREATE TABLE produtos (
     PRIMARY KEY (id_produto)
 );
 
-```
-
----
-
-**Agora que terminamos os inteiros, gostaria de converter também aquela explicação sobre o cálculo binário (bits e bytes) para .md ou prefere seguir para tipos de texto?**
