@@ -5,4 +5,14 @@ CREATE DATABASE IF NOT EXISTS loja_joao
 	CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
 
-SHOW CREATE DATABASE loja_joao;
+USE loja_joao;
+CREATE TABLE pessoas(
+id_pessoa INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(255),
+idade TINYINT(3), 
+sexo CHAR(1),
+peso DECIMAL(5,2)
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
+  SHOW TABLE 
